@@ -42,7 +42,7 @@
               "description": null,
               "arguments": {
                 "name": "Snort IP Blocklist Feed",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "snort-ip-blocklist-feed",
@@ -350,7 +350,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n  {\n    \"title\": \"Confidence\",\n    \"name\": \"confidence\",\n    \"type\": \"integer\",\n    \"tooltip\": \"Default Confidence score to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 90,\n    \"validation\": {\n       \"minlength\": 0,\n       \"maxlength\": 100\n    }\n  },\n  {\n    \"title\": \"Reputation\",\n    \"name\": \"reputation\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default Reputation to be set for the feeds\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Good\", \"Suspicious\", \"Malicious\", \"No Reputation Available\", \"TBD\"],\n    \"value\": \"Good\"\n  },\n  {\n    \"title\": \"TLP\",\n    \"name\": \"tlp\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default TLP to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Red\", \"Amber\", \"Green\", \"White\"],\n    \"value\": \"White\"\n  }\n]"
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Reputation\",\n    \"name\": \"reputation\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default Reputation to be set for the feeds\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Good\", \"Suspicious\", \"Malicious\", \"No Reputation Available\", \"TBD\"],\n    \"value\": \"Good\"\n  },\n  {\n    \"title\": \"Confidence\",\n    \"name\": \"confidence\",\n    \"type\": \"integer\",\n    \"tooltip\": \"Default Confidence score to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 90,\n    \"validation\": {\n       \"minlength\": 0,\n       \"maxlength\": 100\n    }\n  },\n  {\n    \"title\": \"TLP\",\n    \"name\": \"tlp\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default TLP to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Red\", \"Amber\", \"Green\", \"White\"],\n    \"value\": \"White\"\n  }\n]"
                 }
               },
               "status": null,
