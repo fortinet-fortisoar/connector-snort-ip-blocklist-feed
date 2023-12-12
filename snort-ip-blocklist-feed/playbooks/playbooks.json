@@ -1,0 +1,453 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Snort IP Blocklist Feed - 1.0.0",
+      "description": "Sample playbooks for \"Snort IP Blocklist Feed\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "id": 256,
+      "createDate": 1701972300.089052,
+      "modifyDate": 1701972300.089052,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Snort",
+        "snort-ip-blocklist-feed"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Indicators",
+          "aliasName": null,
+          "tag": "#Snort IP Blocklist Feed",
+          "description": "Retrieves the Snort IP Blocklist IP addresses from the Snort IP Blocklist Feed server.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a74b8fd7-b754-40cd-9864-e8b918594d2d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Indicators",
+              "description": null,
+              "arguments": {
+                "name": "Snort IP Blocklist Feed",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "snort-ip-blocklist-feed",
+                "operation": "get_indicators",
+                "operationTitle": "Get Indicators"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "97308d50-b476-4277-9366-eb07253d8236"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e95c6ff2-e072-4554-b540-10ef7d4bb50d",
+                "title": "Snort IP Blocklist Feed: Get Indicators",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a74b8fd7-b754-40cd-9864-e8b918594d2d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Indicators",
+              "targetStep": "/api/3/workflow_steps/97308d50-b476-4277-9366-eb07253d8236",
+              "sourceStep": "/api/3/workflow_steps/a74b8fd7-b754-40cd-9864-e8b918594d2d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c81af7ac-6400-49c7-98d4-e0cec89035d0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "7d8e7a42-d8d1-4f58-bd8a-32ac957e64f9",
+          "id": 4257,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Snort",
+            "snort-ip-blocklist-feed"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Snort IP Blocklist Feed > Ingest",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetch Collections from Snort IP Blocklist Feed",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1701971901,
+          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1dcda0e4-70ed-4c3e-8365-273b5039caad",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Indicators",
+              "description": null,
+              "arguments": {
+                "arguments": [],
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/c9ac72d0-8d4c-42a7-b171-1ece03015eeb"
+              },
+              "status": null,
+              "top": "60",
+              "left": "420",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "cfdde8cb-0b36-485a-b0eb-8e0962167662"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "1dcda0e4-70ed-4c3e-8365-273b5039caad"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Indicators",
+              "targetStep": "/api/3/workflow_steps/cfdde8cb-0b36-485a-b0eb-8e0962167662",
+              "sourceStep": "/api/3/workflow_steps/1dcda0e4-70ed-4c3e-8365-273b5039caad",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a2f841c7-2af6-4a7f-b493-302251e62a75"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "c260aceb-8418-4694-9003-a6b76d071e94",
+          "id": 4258,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "ingest",
+            "Snort",
+            "snort-ip-blocklist-feed"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "> Snort IP Blocklist Feed > Fetch and Create",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetch and Create Indicators from Snort IP Blocklist Feed",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1701972094,
+          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7dd1988f-f677-4c15-8ac1-413f56b39081",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "tlp": "White",
+                "tlp_map": "{'Red': {{'TrafficLightProtocol'| picklist('Red') }}, 'Amber': {{'TrafficLightProtocol'| picklist('Amber') }}, 'Green': {{'TrafficLightProtocol'| picklist('Green') }}, 'White': {{'TrafficLightProtocol'| picklist('White') }}}",
+                "confidence": 90,
+                "reputation": "Good",
+                "reputation_map": "{'Good': {{'IndicatorReputation'| picklist('Good') }}, 'Malicious': {{'IndicatorReputation'| picklist('Malicious') }}, 'Suspicious': {{'IndicatorReputation'| picklist('Suspicious') }}, 'TBD': {{'IndicatorReputation'| picklist('TBD') }}, 'No Reputation Available': {{'IndicatorReputation'| picklist('No Reputation Available') }}}"
+              },
+              "status": null,
+              "top": "160",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "027b3ca4-c2a4-4f2e-a17e-f1ba7a1a76a9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Record",
+              "description": null,
+              "arguments": {
+                "for_each": {
+                  "item": "{{vars.steps.Get_Indicators.data}}",
+                  "__bulk": true,
+                  "parallel": false,
+                  "condition": "",
+                  "batch_size": 100
+                },
+                "resource": {
+                  "tLP": "{% if vars.tlp %}{{ vars.tlp | resolveRange(vars.tlp_map)}}{% else %}None{% endif %}",
+                  "value": "{{vars.item}}",
+                  "source": "Snort IP Blocklist Feed",
+                  "__replace": "",
+                  "confidence": "{% if vars.confidence %}{{ vars.confidence }}{% else %}None{% endif %}",
+                  "reputation": "{% if vars.reputation %}{{ vars.reputation | resolveRange(vars.reputation_map)}}{% else %}None{% endif %}",
+                  "sourceData": "{{vars.item | toJSON}}",
+                  "typeOfFeed": "/api/3/picklists/b788efc2-dadb-4448-9018-043b37266de4"
+                },
+                "_showJson": false,
+                "collection": "/api/ingest-feeds/threat_intel_feeds",
+                "__recommend": [],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "460",
+              "left": "860",
+              "stepType": "/api/3/workflow_step_types/7b221880-716b-4726-a2ca-5e568d330b3e",
+              "group": null,
+              "uuid": "593c743f-82fa-46d7-958e-e0c3c8f1a1f0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Indicators",
+              "description": null,
+              "arguments": {
+                "name": "Snort IP Blocklist Feed",
+                "config": "022754c2-48b5-45ea-b1e6-24703cdfc404",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "snort-ip-blocklist-feed",
+                "operation": "get_indicators",
+                "operationTitle": "Get Indicators",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "460",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "28ebc9a7-6f51-49ef-9a17-0a854764c749"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is data only for mapping",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "Yes, For Mapping",
+                    "step_iri": "/api/3/workflow_steps/bafde389-9fd0-4540-b01d-9a51e0260361",
+                    "condition": "{{ vars.request.env_setup == true }}",
+                    "step_name": "Return Sample Data"
+                  },
+                  {
+                    "option": "No, For Ingestion",
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/28ebc9a7-6f51-49ef-9a17-0a854764c749",
+                    "step_name": "Get Indicators"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "400",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "0c0d874a-12b8-420a-bf97-ef8036b1d811"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Resolve Range",
+              "description": null,
+              "arguments": {
+                "tlp_resolved": "{{vars.tlp | resolveRange(vars.tlp_map)}}",
+                "reputation_resolved": "{{vars.reputation | resolveRange(vars.reputation_map)}}"
+              },
+              "status": null,
+              "top": "280",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "7c6b722f-ca13-48db-8c7e-e0d21d5fb986"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Return Sample Data",
+              "description": null,
+              "arguments": {
+                "data": "[\"91.109.184.3\", \"95.25.55.104\",\"91.109.186.3\"]"
+              },
+              "status": null,
+              "top": "220",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "bafde389-9fd0-4540-b01d-9a51e0260361"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  },
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Reputation\",\n    \"name\": \"reputation\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default Reputation to be set for the feeds\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Good\", \"Suspicious\", \"Malicious\", \"No Reputation Available\", \"TBD\"],\n    \"value\": \"Good\"\n  },\n  {\n    \"title\": \"Confidence\",\n    \"name\": \"confidence\",\n    \"type\": \"integer\",\n    \"tooltip\": \"Default Confidence score to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 90,\n    \"validation\": {\n       \"minlength\": 0,\n       \"maxlength\": 100\n    }\n  },\n  {\n    \"title\": \"TLP\",\n    \"name\": \"tlp\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default TLP to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Red\", \"Amber\", \"Green\", \"White\"],\n    \"value\": \"White\"\n  }\n]"
+                }
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "7dd1988f-f677-4c15-8ac1-413f56b39081"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Resolve Range",
+              "targetStep": "/api/3/workflow_steps/7c6b722f-ca13-48db-8c7e-e0d21d5fb986",
+              "sourceStep": "/api/3/workflow_steps/027b3ca4-c2a4-4f2e-a17e-f1ba7a1a76a9",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "47d4c29a-c07d-44fb-abf9-9f94a89f5bbb"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Indicators -> Create Record",
+              "targetStep": "/api/3/workflow_steps/593c743f-82fa-46d7-958e-e0c3c8f1a1f0",
+              "sourceStep": "/api/3/workflow_steps/28ebc9a7-6f51-49ef-9a17-0a854764c749",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "572def83-4159-4499-87dd-b9b94377e581"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Is data only for mapping -> Get Indicators",
+              "targetStep": "/api/3/workflow_steps/28ebc9a7-6f51-49ef-9a17-0a854764c749",
+              "sourceStep": "/api/3/workflow_steps/0c0d874a-12b8-420a-bf97-ef8036b1d811",
+              "label": "No, For Ingestion",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "565dd993-374b-4e8e-a095-fda3d04f165a"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Is data only for mapping -> Return Sample Data",
+              "targetStep": "/api/3/workflow_steps/bafde389-9fd0-4540-b01d-9a51e0260361",
+              "sourceStep": "/api/3/workflow_steps/0c0d874a-12b8-420a-bf97-ef8036b1d811",
+              "label": "Yes, For Mapping",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9c4d6537-68f8-4b59-b8e7-b9b21d3ed4e4"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Resolve Range -> Is data only for mapping",
+              "targetStep": "/api/3/workflow_steps/0c0d874a-12b8-420a-bf97-ef8036b1d811",
+              "sourceStep": "/api/3/workflow_steps/7c6b722f-ca13-48db-8c7e-e0d21d5fb986",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "16eef55d-589a-4f95-b8e4-d3b40620ab22"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/027b3ca4-c2a4-4f2e-a17e-f1ba7a1a76a9",
+              "sourceStep": "/api/3/workflow_steps/7dd1988f-f677-4c15-8ac1-413f56b39081",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d4233e7c-77eb-4ee2-920c-74b7d0b0a03d"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "c9ac72d0-8d4c-42a7-b171-1ece03015eeb",
+          "id": 4259,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "create",
+            "fetch",
+            "Snort",
+            "snort-ip-blocklist-feed"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Snort",
+    "snort-ip-blocklist-feed",
+    "dataingestion",
+    "ingest",
+    "create",
+    "fetch"
+  ]
+}
