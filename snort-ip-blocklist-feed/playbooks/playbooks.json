@@ -205,7 +205,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1703054723,
+          "lastModifyDate": 1703065339,
           "collection": "/api/3/workflow_collections/e01455d5-2536-4eb4-9dac-aed23bee9c7e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/7dd1988f-f677-4c15-8ac1-413f56b39081",
@@ -241,18 +241,15 @@
                   "batch_size": 100
                 },
                 "resource": {
-                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
                   "value": "{{vars.item}}",
                   "__replace": "",
                   "confidence": "{% if vars.confidence %}{{ vars.confidence }}{% else %}None{% endif %}",
                   "reputation": "{% if vars.reputation %}{{ vars.reputation | resolveRange(vars.reputation_map)}}{% else %}None{% endif %}",
                   "sourceData": "{{vars.item | toJSON}}",
-                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
-                  "typeofindicator": "/api/3/picklists/c0beeda4-2c7a-4214-b7e5-53ba1649539c",
-                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                  "typeOfFeed": "/api/3/picklists/b788efc2-dadb-4448-9018-043b37266de4"
                 },
                 "_showJson": false,
-                "collection": "/api/ingest-feeds/indicators",
+                "collection": "/api/ingest-feeds/threat_intel_feeds",
                 "__recommend": [],
                 "step_variables": []
               },
