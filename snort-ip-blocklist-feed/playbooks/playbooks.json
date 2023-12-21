@@ -7,10 +7,10 @@
       "name": "Sample - Snort IP Blocklist Feed - 1.0.0",
       "description": "Sample playbooks for \"Snort IP Blocklist Feed\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": null,
-      "id": 256,
-      "createDate": 1701972300.089052,
-      "modifyDate": 1701972300.089052,
+      "image": "/api/3/images/72fe4ea9-2198-491d-894a-8f5ad6139493",
+      "id": 126,
+      "createDate": 1703054614.768896,
+      "modifyDate": 1703054614.768896,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -32,7 +32,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "collection": "/api/3/workflow_collections/e01455d5-2536-4eb4-9dac-aed23bee9c7e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/a74b8fd7-b754-40cd-9864-e8b918594d2d",
           "steps": [
@@ -99,7 +99,7 @@
           "groups": [],
           "priority": null,
           "uuid": "7d8e7a42-d8d1-4f58-bd8a-32ac957e64f9",
-          "id": 4257,
+          "id": 879,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -123,7 +123,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": 1701971901,
-          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "collection": "/api/3/workflow_collections/e01455d5-2536-4eb4-9dac-aed23bee9c7e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/1dcda0e4-70ed-4c3e-8365-273b5039caad",
           "steps": [
@@ -180,7 +180,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c260aceb-8418-4694-9003-a6b76d071e94",
-          "id": 4258,
+          "id": 880,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -205,8 +205,8 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1701972094,
-          "collection": "/api/3/workflow_collections/ea662949-64db-43f3-8761-1e4892932e41",
+          "lastModifyDate": 1703065339,
+          "collection": "/api/3/workflow_collections/e01455d5-2536-4eb4-9dac-aed23bee9c7e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/7dd1988f-f677-4c15-8ac1-413f56b39081",
           "steps": [
@@ -215,10 +215,10 @@
               "name": "Configuration",
               "description": null,
               "arguments": {
-                "tlp": "White",
+                "tlp": "Red",
                 "tlp_map": "{'Red': {{'TrafficLightProtocol'| picklist('Red') }}, 'Amber': {{'TrafficLightProtocol'| picklist('Amber') }}, 'Green': {{'TrafficLightProtocol'| picklist('Green') }}, 'White': {{'TrafficLightProtocol'| picklist('White') }}}",
                 "confidence": 90,
-                "reputation": "Good",
+                "reputation": "Malicious",
                 "reputation_map": "{'Good': {{'IndicatorReputation'| picklist('Good') }}, 'Malicious': {{'IndicatorReputation'| picklist('Malicious') }}, 'Suspicious': {{'IndicatorReputation'| picklist('Suspicious') }}, 'TBD': {{'IndicatorReputation'| picklist('TBD') }}, 'No Reputation Available': {{'IndicatorReputation'| picklist('No Reputation Available') }}}"
               },
               "status": null,
@@ -241,9 +241,7 @@
                   "batch_size": 100
                 },
                 "resource": {
-                  "tLP": "{% if vars.tlp %}{{ vars.tlp | resolveRange(vars.tlp_map)}}{% else %}None{% endif %}",
                   "value": "{{vars.item}}",
-                  "source": "Snort IP Blocklist Feed",
                   "__replace": "",
                   "confidence": "{% if vars.confidence %}{{ vars.confidence }}{% else %}None{% endif %}",
                   "reputation": "{% if vars.reputation %}{{ vars.reputation | resolveRange(vars.reputation_map)}}{% else %}None{% endif %}",
@@ -350,7 +348,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n  {\n    \"title\": \"Reputation\",\n    \"name\": \"reputation\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default Reputation to be set for the feeds\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Good\", \"Suspicious\", \"Malicious\", \"No Reputation Available\", \"TBD\"],\n    \"value\": \"Good\"\n  },\n  {\n    \"title\": \"Confidence\",\n    \"name\": \"confidence\",\n    \"type\": \"integer\",\n    \"tooltip\": \"Default Confidence score to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 90,\n    \"validation\": {\n       \"minlength\": 0,\n       \"maxlength\": 100\n    }\n  },\n  {\n    \"title\": \"TLP\",\n    \"name\": \"tlp\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default TLP to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Red\", \"Amber\", \"Green\", \"White\"],\n    \"value\": \"White\"\n  }\n]"
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Reputation\",\n    \"name\": \"reputation\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default Reputation to be set for the feeds\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Good\", \"Suspicious\", \"Malicious\", \"No Reputation Available\", \"TBD\"],\n    \"value\": \"Malicious\"\n  },\n  {\n    \"title\": \"Confidence\",\n    \"name\": \"confidence\",\n    \"type\": \"integer\",\n    \"tooltip\": \"Default Confidence score to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 90,\n    \"validation\": {\n       \"minlength\": 0,\n       \"maxlength\": 100\n    }\n  },\n  {\n    \"title\": \"TLP\",\n    \"name\": \"tlp\",\n    \"type\": \"select\",\n    \"tooltip\": \"Default TLP to be set for the feeds\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\"Red\", \"Amber\", \"Green\", \"White\"],\n    \"value\": \"Red\"\n  }\n]"
                 }
               },
               "status": null,
@@ -426,14 +424,14 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c9ac72d0-8d4c-42a7-b171-1ece03015eeb",
-          "id": 4259,
+          "id": 881,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "dataingestion",
             "create",
+            "dataingestion",
             "fetch",
             "Snort",
             "snort-ip-blocklist-feed"
