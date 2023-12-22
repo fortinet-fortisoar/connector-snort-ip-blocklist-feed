@@ -241,7 +241,9 @@
                   "batch_size": 100
                 },
                 "resource": {
+                  "tLP": "{% if vars.tlp %}{{ vars.tlp | resolveRange(vars.tlp_map)}}{% else %}None{% endif %}",
                   "value": "{{vars.item}}",
+                  "source": "Snort IP Blocklist Feed",
                   "__replace": "",
                   "confidence": "{% if vars.confidence %}{{ vars.confidence }}{% else %}None{% endif %}",
                   "reputation": "{% if vars.reputation %}{{ vars.reputation | resolveRange(vars.reputation_map)}}{% else %}None{% endif %}",
