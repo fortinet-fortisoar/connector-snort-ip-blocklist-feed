@@ -4,7 +4,7 @@
     {
       "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "Sample - Snort IP Blocklist Feed - 1.0.0",
+      "name": "Sample - Snort IP Blocklist Feed - 2.0.0",
       "description": "Sample playbooks for \"Snort IP Blocklist Feed\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/72fe4ea9-2198-491d-894a-8f5ad6139493",
@@ -44,7 +44,7 @@
                 "name": "Snort IP Blocklist Feed",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "snort-ip-blocklist-feed",
                 "operation": "get_indicators",
                 "operationTitle": "Get Indicators"
@@ -270,7 +270,7 @@
                 "name": "Snort IP Blocklist Feed",
                 "config": "022754c2-48b5-45ea-b1e6-24703cdfc404",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "snort-ip-blocklist-feed",
                 "operation": "get_indicators",
                 "operationTitle": "Get Indicators",

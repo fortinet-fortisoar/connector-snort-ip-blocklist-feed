@@ -7,7 +7,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/snort-ip-blocklist-feed/754/snort-ip-blocklist-feed-1-0-0",
+  "help_online": "",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "ingestion_supported": true,
