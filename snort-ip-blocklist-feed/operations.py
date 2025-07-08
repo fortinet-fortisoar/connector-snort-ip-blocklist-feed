@@ -32,7 +32,6 @@ def get_indicators(config):
         headers["Referer"] = terms_url
         accept_response = session.post(accept_url, data=form_data, headers=headers, timeout=10, verify=config.get('verify_ssl'))
         if accept_response.status_code != 200:
-            logger.error(f"Response content: {accept_response.text}")
             raise ConnectorError(f"Failed to accept terms (status {accept_response.status_code})")
         download_response = session.get(config.get('server_url'), headers=headers, timeout=10, verify=config.get('verify_ssl'))
         if download_response.status_code != 200:
