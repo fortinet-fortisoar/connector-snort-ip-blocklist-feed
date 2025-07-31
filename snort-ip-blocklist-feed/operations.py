@@ -14,31 +14,31 @@ logger = get_logger('snort-ip-blocklist-feed')
 
 def get_indicators(config):
     try:
-        session = requests.Session()
-        headers = {}
-        terms_url = "https://www.snort.org/downloads/ip-block-list/terms"
-        terms_response = session.get(terms_url, headers=headers, timeout=10, verify=config.get('verify_ssl'))
+        with requests.Session() as session:
+            headers = {}
+            terms_url = "https://www.snort.org/downloads/ip-block-list/terms"
+            terms_response = session.get(terms_url, headers=headers, timeout=10, verify=config.get('verify_ssl'))
 
-        if terms_response.status_code != 200:
-            raise ConnectorError(f"Failed to fetch terms page (status {terms_response.status_code})")
+            if terms_response.status_code != 200:
+                raise ConnectorError(f"Failed to fetch terms page (status {terms_response.status_code})")
 
-        soup = BeautifulSoup(terms_response.text, 'html.parser')
-        csrf_meta = soup.find("meta", attrs={"name": "csrf-token"})
-        if not csrf_meta:
-            raise ConnectorError("CSRF token not found in page.")
-        csrf_token = csrf_meta["content"]
-        accept_url = "https://www.snort.org/downloads/ip-block-list/accept-terms"
-        form_data = {"authenticity_token": csrf_token}
-        headers["Referer"] = terms_url
-        accept_response = session.post(accept_url, data=form_data, headers=headers, timeout=10, verify=config.get('verify_ssl'))
-        if accept_response.status_code != 200:
-            raise ConnectorError(f"Failed to accept terms (status {accept_response.status_code})")
-        download_response = session.get(config.get('server_url'), headers=headers, timeout=10, verify=config.get('verify_ssl'))
-        if download_response.status_code != 200:
-            raise ConnectorError(f"Failed to download IP block list (status {download_response.status_code})")
-        ip_list = download_response.content.decode('utf-8').split('\n')
-        ip_list = [ip for ip in ip_list if ip]
-        return ip_list
+            soup = BeautifulSoup(terms_response.text, 'html.parser')
+            csrf_meta = soup.find("meta", attrs={"name": "csrf-token"})
+            if not csrf_meta:
+                raise ConnectorError("CSRF token not found in page.")
+            csrf_token = csrf_meta["content"]
+            accept_url = "https://www.snort.org/downloads/ip-block-list/accept-terms"
+            form_data = {"authenticity_token": csrf_token}
+            headers["Referer"] = terms_url
+            accept_response = session.post(accept_url, data=form_data, headers=headers, timeout=10, verify=config.get('verify_ssl'))
+            if accept_response.status_code != 200:
+                raise ConnectorError(f"Failed to accept terms (status {accept_response.status_code})")
+            download_response = session.get(config.get('server_url'), headers=headers, timeout=10, verify=config.get('verify_ssl'))
+            if download_response.status_code != 200:
+                raise ConnectorError(f"Failed to download IP block list (status {download_response.status_code})")
+            ip_list = download_response.content.decode('utf-8').split('\n')
+            ip_list = [ip for ip in ip_list if ip]
+            return ip_list
     except requests.exceptions.SSLError:
         logger.error('An SSL error occurred')
         raise ConnectorError('An SSL error occurred')
